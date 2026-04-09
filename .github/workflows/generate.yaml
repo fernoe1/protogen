@@ -64,8 +64,11 @@ jobs:
         run: |
           git clone https://github.com/fernoe1/protogen.git gen-repo
 
-          # Copy all generated .pb.go files preserving folder structure
-          cd proto-src
+          cd gen-repo
+          
+          find . -mindepth 1 -not -path "./.git*" -delete
+          
+          cd ../proto-src
           find . -name "*.pb.go" | while read file; do
             target="../gen-repo/$(dirname "$file")"
             mkdir -p "$target"
