@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+    tags:
+      - 'v*'
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -84,5 +88,5 @@ jobs:
             NEW_TAG="v0.0.$(date +%s)"
             git tag "$NEW_TAG"
             git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/fernoe1/protogen.git
-            git push origin master --follow-tags
+            git push origin HEAD --follow-tags
           fi
