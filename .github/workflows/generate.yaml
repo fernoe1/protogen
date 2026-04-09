@@ -86,5 +86,6 @@ jobs:
             NEW_TAG="v0.0.$(date +%s)"
             git tag "$NEW_TAG"
             git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/fernoe1/protogen.git
+            git pull --rebase origin main
             git push origin HEAD --follow-tags
           fi
