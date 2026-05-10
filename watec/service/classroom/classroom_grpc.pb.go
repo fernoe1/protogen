@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v3.21.12
-// source: watec/service/classroom.proto
+// source: watec/service/classroom/classroom.proto
 
 package clsrmsvc
 
@@ -216,5 +216,5 @@ var ClassroomService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "watec/service/classroom.proto",
+	Metadata: "watec/service/classroom/classroom.proto",
 }

@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v3.21.12
-// source: watec/service/teacher.proto
+// source: watec/service/teacher/teacher.proto
 
 package tchersvc
 
@@ -216,5 +216,5 @@ var TeacherService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "watec/service/teacher.proto",
+	Metadata: "watec/service/teacher/teacher.proto",
 }
