@@ -19,20 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	LockerService_CreateData_FullMethodName = "/watec.service.locker.LockerService/CreateData"
-	LockerService_ReadData_FullMethodName   = "/watec.service.locker.LockerService/ReadData"
-	LockerService_UpdateData_FullMethodName = "/watec.service.locker.LockerService/UpdateData"
-	LockerService_DeleteData_FullMethodName = "/watec.service.locker.LockerService/DeleteData"
+	LockerService_Create_FullMethodName = "/watec.service.locker.LockerService/Create"
+	LockerService_Read_FullMethodName   = "/watec.service.locker.LockerService/Read"
+	LockerService_Update_FullMethodName = "/watec.service.locker.LockerService/Update"
+	LockerService_Delete_FullMethodName = "/watec.service.locker.LockerService/Delete"
 )
 
 // LockerServiceClient is the client API for LockerService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type LockerServiceClient interface {
-	CreateData(ctx context.Context, in *CreateDataRequest, opts ...grpc.CallOption) (*CreateDataResponse, error)
-	ReadData(ctx context.Context, in *ReadDataRequest, opts ...grpc.CallOption) (*ReadDataResponse, error)
-	UpdateData(ctx context.Context, in *UpdateDataRequest, opts ...grpc.CallOption) (*UpdateDataResponse, error)
-	DeleteData(ctx context.Context, in *DeleteDataRequest, opts ...grpc.CallOption) (*DeleteDataResponse, error)
+	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	Read(ctx context.Context, in *ReadRequest, opts ...grpc.CallOption) (*ReadResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error)
 }
 
 type lockerServiceClient struct {
@@ -43,36 +43,36 @@ func NewLockerServiceClient(cc grpc.ClientConnInterface) LockerServiceClient {
 	return &lockerServiceClient{cc}
 }
 
-func (c *lockerServiceClient) CreateData(ctx context.Context, in *CreateDataRequest, opts ...grpc.CallOption) (*CreateDataResponse, error) {
-	out := new(CreateDataResponse)
-	err := c.cc.Invoke(ctx, LockerService_CreateData_FullMethodName, in, out, opts...)
+func (c *lockerServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+	out := new(CreateResponse)
+	err := c.cc.Invoke(ctx, LockerService_Create_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *lockerServiceClient) ReadData(ctx context.Context, in *ReadDataRequest, opts ...grpc.CallOption) (*ReadDataResponse, error) {
-	out := new(ReadDataResponse)
-	err := c.cc.Invoke(ctx, LockerService_ReadData_FullMethodName, in, out, opts...)
+func (c *lockerServiceClient) Read(ctx context.Context, in *ReadRequest, opts ...grpc.CallOption) (*ReadResponse, error) {
+	out := new(ReadResponse)
+	err := c.cc.Invoke(ctx, LockerService_Read_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *lockerServiceClient) UpdateData(ctx context.Context, in *UpdateDataRequest, opts ...grpc.CallOption) (*UpdateDataResponse, error) {
-	out := new(UpdateDataResponse)
-	err := c.cc.Invoke(ctx, LockerService_UpdateData_FullMethodName, in, out, opts...)
+func (c *lockerServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
+	out := new(UpdateResponse)
+	err := c.cc.Invoke(ctx, LockerService_Update_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *lockerServiceClient) DeleteData(ctx context.Context, in *DeleteDataRequest, opts ...grpc.CallOption) (*DeleteDataResponse, error) {
-	out := new(DeleteDataResponse)
-	err := c.cc.Invoke(ctx, LockerService_DeleteData_FullMethodName, in, out, opts...)
+func (c *lockerServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error) {
+	out := new(DeleteResponse)
+	err := c.cc.Invoke(ctx, LockerService_Delete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,10 +83,10 @@ func (c *lockerServiceClient) DeleteData(ctx context.Context, in *DeleteDataRequ
 // All implementations must embed UnimplementedLockerServiceServer
 // for forward compatibility
 type LockerServiceServer interface {
-	CreateData(context.Context, *CreateDataRequest) (*CreateDataResponse, error)
-	ReadData(context.Context, *ReadDataRequest) (*ReadDataResponse, error)
-	UpdateData(context.Context, *UpdateDataRequest) (*UpdateDataResponse, error)
-	DeleteData(context.Context, *DeleteDataRequest) (*DeleteDataResponse, error)
+	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	Read(context.Context, *ReadRequest) (*ReadResponse, error)
+	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	Delete(context.Context, *DeleteRequest) (*DeleteResponse, error)
 	mustEmbedUnimplementedLockerServiceServer()
 }
 
@@ -94,17 +94,17 @@ type LockerServiceServer interface {
 type UnimplementedLockerServiceServer struct {
 }
 
-func (UnimplementedLockerServiceServer) CreateData(context.Context, *CreateDataRequest) (*CreateDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateData not implemented")
+func (UnimplementedLockerServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedLockerServiceServer) ReadData(context.Context, *ReadDataRequest) (*ReadDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadData not implemented")
+func (UnimplementedLockerServiceServer) Read(context.Context, *ReadRequest) (*ReadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Read not implemented")
 }
-func (UnimplementedLockerServiceServer) UpdateData(context.Context, *UpdateDataRequest) (*UpdateDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateData not implemented")
+func (UnimplementedLockerServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedLockerServiceServer) DeleteData(context.Context, *DeleteDataRequest) (*DeleteDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteData not implemented")
+func (UnimplementedLockerServiceServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedLockerServiceServer) mustEmbedUnimplementedLockerServiceServer() {}
 
@@ -119,74 +119,74 @@ func RegisterLockerServiceServer(s grpc.ServiceRegistrar, srv LockerServiceServe
 	s.RegisterService(&LockerService_ServiceDesc, srv)
 }
 
-func _LockerService_CreateData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateDataRequest)
+func _LockerService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LockerServiceServer).CreateData(ctx, in)
+		return srv.(LockerServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LockerService_CreateData_FullMethodName,
+		FullMethod: LockerService_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LockerServiceServer).CreateData(ctx, req.(*CreateDataRequest))
+		return srv.(LockerServiceServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LockerService_ReadData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadDataRequest)
+func _LockerService_Read_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LockerServiceServer).ReadData(ctx, in)
+		return srv.(LockerServiceServer).Read(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LockerService_ReadData_FullMethodName,
+		FullMethod: LockerService_Read_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LockerServiceServer).ReadData(ctx, req.(*ReadDataRequest))
+		return srv.(LockerServiceServer).Read(ctx, req.(*ReadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LockerService_UpdateData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateDataRequest)
+func _LockerService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LockerServiceServer).UpdateData(ctx, in)
+		return srv.(LockerServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LockerService_UpdateData_FullMethodName,
+		FullMethod: LockerService_Update_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LockerServiceServer).UpdateData(ctx, req.(*UpdateDataRequest))
+		return srv.(LockerServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LockerService_DeleteData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteDataRequest)
+func _LockerService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LockerServiceServer).DeleteData(ctx, in)
+		return srv.(LockerServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LockerService_DeleteData_FullMethodName,
+		FullMethod: LockerService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LockerServiceServer).DeleteData(ctx, req.(*DeleteDataRequest))
+		return srv.(LockerServiceServer).Delete(ctx, req.(*DeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -199,20 +199,20 @@ var LockerService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*LockerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateData",
-			Handler:    _LockerService_CreateData_Handler,
+			MethodName: "Create",
+			Handler:    _LockerService_Create_Handler,
 		},
 		{
-			MethodName: "ReadData",
-			Handler:    _LockerService_ReadData_Handler,
+			MethodName: "Read",
+			Handler:    _LockerService_Read_Handler,
 		},
 		{
-			MethodName: "UpdateData",
-			Handler:    _LockerService_UpdateData_Handler,
+			MethodName: "Update",
+			Handler:    _LockerService_Update_Handler,
 		},
 		{
-			MethodName: "DeleteData",
-			Handler:    _LockerService_DeleteData_Handler,
+			MethodName: "Delete",
+			Handler:    _LockerService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

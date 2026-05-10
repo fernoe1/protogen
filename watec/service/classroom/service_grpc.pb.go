@@ -19,20 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ClassroomService_CreateData_FullMethodName = "/watec.service.classroom.ClassroomService/CreateData"
-	ClassroomService_ReadData_FullMethodName   = "/watec.service.classroom.ClassroomService/ReadData"
-	ClassroomService_UpdateData_FullMethodName = "/watec.service.classroom.ClassroomService/UpdateData"
-	ClassroomService_DeleteData_FullMethodName = "/watec.service.classroom.ClassroomService/DeleteData"
+	ClassroomService_Create_FullMethodName = "/watec.service.classroom.ClassroomService/Create"
+	ClassroomService_Read_FullMethodName   = "/watec.service.classroom.ClassroomService/Read"
+	ClassroomService_Update_FullMethodName = "/watec.service.classroom.ClassroomService/Update"
+	ClassroomService_Delete_FullMethodName = "/watec.service.classroom.ClassroomService/Delete"
 )
 
 // ClassroomServiceClient is the client API for ClassroomService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ClassroomServiceClient interface {
-	CreateData(ctx context.Context, in *CreateDataRequest, opts ...grpc.CallOption) (*CreateDataResponse, error)
-	ReadData(ctx context.Context, in *ReadDataRequest, opts ...grpc.CallOption) (*ReadDataResponse, error)
-	UpdateData(ctx context.Context, in *UpdateDataRequest, opts ...grpc.CallOption) (*UpdateDataResponse, error)
-	DeleteData(ctx context.Context, in *DeleteDataRequest, opts ...grpc.CallOption) (*DeleteDataResponse, error)
+	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	Read(ctx context.Context, in *ReadRequest, opts ...grpc.CallOption) (*ReadResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error)
 }
 
 type classroomServiceClient struct {
@@ -43,36 +43,36 @@ func NewClassroomServiceClient(cc grpc.ClientConnInterface) ClassroomServiceClie
 	return &classroomServiceClient{cc}
 }
 
-func (c *classroomServiceClient) CreateData(ctx context.Context, in *CreateDataRequest, opts ...grpc.CallOption) (*CreateDataResponse, error) {
-	out := new(CreateDataResponse)
-	err := c.cc.Invoke(ctx, ClassroomService_CreateData_FullMethodName, in, out, opts...)
+func (c *classroomServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+	out := new(CreateResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_Create_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *classroomServiceClient) ReadData(ctx context.Context, in *ReadDataRequest, opts ...grpc.CallOption) (*ReadDataResponse, error) {
-	out := new(ReadDataResponse)
-	err := c.cc.Invoke(ctx, ClassroomService_ReadData_FullMethodName, in, out, opts...)
+func (c *classroomServiceClient) Read(ctx context.Context, in *ReadRequest, opts ...grpc.CallOption) (*ReadResponse, error) {
+	out := new(ReadResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_Read_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *classroomServiceClient) UpdateData(ctx context.Context, in *UpdateDataRequest, opts ...grpc.CallOption) (*UpdateDataResponse, error) {
-	out := new(UpdateDataResponse)
-	err := c.cc.Invoke(ctx, ClassroomService_UpdateData_FullMethodName, in, out, opts...)
+func (c *classroomServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
+	out := new(UpdateResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_Update_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *classroomServiceClient) DeleteData(ctx context.Context, in *DeleteDataRequest, opts ...grpc.CallOption) (*DeleteDataResponse, error) {
-	out := new(DeleteDataResponse)
-	err := c.cc.Invoke(ctx, ClassroomService_DeleteData_FullMethodName, in, out, opts...)
+func (c *classroomServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error) {
+	out := new(DeleteResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_Delete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,10 +83,10 @@ func (c *classroomServiceClient) DeleteData(ctx context.Context, in *DeleteDataR
 // All implementations must embed UnimplementedClassroomServiceServer
 // for forward compatibility
 type ClassroomServiceServer interface {
-	CreateData(context.Context, *CreateDataRequest) (*CreateDataResponse, error)
-	ReadData(context.Context, *ReadDataRequest) (*ReadDataResponse, error)
-	UpdateData(context.Context, *UpdateDataRequest) (*UpdateDataResponse, error)
-	DeleteData(context.Context, *DeleteDataRequest) (*DeleteDataResponse, error)
+	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	Read(context.Context, *ReadRequest) (*ReadResponse, error)
+	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	Delete(context.Context, *DeleteRequest) (*DeleteResponse, error)
 	mustEmbedUnimplementedClassroomServiceServer()
 }
 
@@ -94,17 +94,17 @@ type ClassroomServiceServer interface {
 type UnimplementedClassroomServiceServer struct {
 }
 
-func (UnimplementedClassroomServiceServer) CreateData(context.Context, *CreateDataRequest) (*CreateDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateData not implemented")
+func (UnimplementedClassroomServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedClassroomServiceServer) ReadData(context.Context, *ReadDataRequest) (*ReadDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadData not implemented")
+func (UnimplementedClassroomServiceServer) Read(context.Context, *ReadRequest) (*ReadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Read not implemented")
 }
-func (UnimplementedClassroomServiceServer) UpdateData(context.Context, *UpdateDataRequest) (*UpdateDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateData not implemented")
+func (UnimplementedClassroomServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedClassroomServiceServer) DeleteData(context.Context, *DeleteDataRequest) (*DeleteDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteData not implemented")
+func (UnimplementedClassroomServiceServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedClassroomServiceServer) mustEmbedUnimplementedClassroomServiceServer() {}
 
@@ -119,74 +119,74 @@ func RegisterClassroomServiceServer(s grpc.ServiceRegistrar, srv ClassroomServic
 	s.RegisterService(&ClassroomService_ServiceDesc, srv)
 }
 
-func _ClassroomService_CreateData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateDataRequest)
+func _ClassroomService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ClassroomServiceServer).CreateData(ctx, in)
+		return srv.(ClassroomServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ClassroomService_CreateData_FullMethodName,
+		FullMethod: ClassroomService_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClassroomServiceServer).CreateData(ctx, req.(*CreateDataRequest))
+		return srv.(ClassroomServiceServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ClassroomService_ReadData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadDataRequest)
+func _ClassroomService_Read_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ClassroomServiceServer).ReadData(ctx, in)
+		return srv.(ClassroomServiceServer).Read(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ClassroomService_ReadData_FullMethodName,
+		FullMethod: ClassroomService_Read_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClassroomServiceServer).ReadData(ctx, req.(*ReadDataRequest))
+		return srv.(ClassroomServiceServer).Read(ctx, req.(*ReadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ClassroomService_UpdateData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateDataRequest)
+func _ClassroomService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ClassroomServiceServer).UpdateData(ctx, in)
+		return srv.(ClassroomServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ClassroomService_UpdateData_FullMethodName,
+		FullMethod: ClassroomService_Update_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClassroomServiceServer).UpdateData(ctx, req.(*UpdateDataRequest))
+		return srv.(ClassroomServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ClassroomService_DeleteData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteDataRequest)
+func _ClassroomService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ClassroomServiceServer).DeleteData(ctx, in)
+		return srv.(ClassroomServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ClassroomService_DeleteData_FullMethodName,
+		FullMethod: ClassroomService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClassroomServiceServer).DeleteData(ctx, req.(*DeleteDataRequest))
+		return srv.(ClassroomServiceServer).Delete(ctx, req.(*DeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -199,20 +199,20 @@ var ClassroomService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ClassroomServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateData",
-			Handler:    _ClassroomService_CreateData_Handler,
+			MethodName: "Create",
+			Handler:    _ClassroomService_Create_Handler,
 		},
 		{
-			MethodName: "ReadData",
-			Handler:    _ClassroomService_ReadData_Handler,
+			MethodName: "Read",
+			Handler:    _ClassroomService_Read_Handler,
 		},
 		{
-			MethodName: "UpdateData",
-			Handler:    _ClassroomService_UpdateData_Handler,
+			MethodName: "Update",
+			Handler:    _ClassroomService_Update_Handler,
 		},
 		{
-			MethodName: "DeleteData",
-			Handler:    _ClassroomService_DeleteData_Handler,
+			MethodName: "Delete",
+			Handler:    _ClassroomService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

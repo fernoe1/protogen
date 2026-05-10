@@ -19,20 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TeacherService_CreateData_FullMethodName = "/watec.service.teacher.TeacherService/CreateData"
-	TeacherService_ReadData_FullMethodName   = "/watec.service.teacher.TeacherService/ReadData"
-	TeacherService_UpdateData_FullMethodName = "/watec.service.teacher.TeacherService/UpdateData"
-	TeacherService_DeleteData_FullMethodName = "/watec.service.teacher.TeacherService/DeleteData"
+	TeacherService_Create_FullMethodName = "/watec.service.teacher.TeacherService/Create"
+	TeacherService_Read_FullMethodName   = "/watec.service.teacher.TeacherService/Read"
+	TeacherService_Update_FullMethodName = "/watec.service.teacher.TeacherService/Update"
+	TeacherService_Delete_FullMethodName = "/watec.service.teacher.TeacherService/Delete"
 )
 
 // TeacherServiceClient is the client API for TeacherService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TeacherServiceClient interface {
-	CreateData(ctx context.Context, in *CreateDataRequest, opts ...grpc.CallOption) (*CreateDataResponse, error)
-	ReadData(ctx context.Context, in *ReadDataRequest, opts ...grpc.CallOption) (*ReadDataResponse, error)
-	UpdateData(ctx context.Context, in *UpdateDataRequest, opts ...grpc.CallOption) (*UpdateDataResponse, error)
-	DeleteData(ctx context.Context, in *DeleteDataRequest, opts ...grpc.CallOption) (*DeleteDataResponse, error)
+	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	Read(ctx context.Context, in *ReadRequest, opts ...grpc.CallOption) (*ReadResponse, error)
+	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
+	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error)
 }
 
 type teacherServiceClient struct {
@@ -43,36 +43,36 @@ func NewTeacherServiceClient(cc grpc.ClientConnInterface) TeacherServiceClient {
 	return &teacherServiceClient{cc}
 }
 
-func (c *teacherServiceClient) CreateData(ctx context.Context, in *CreateDataRequest, opts ...grpc.CallOption) (*CreateDataResponse, error) {
-	out := new(CreateDataResponse)
-	err := c.cc.Invoke(ctx, TeacherService_CreateData_FullMethodName, in, out, opts...)
+func (c *teacherServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+	out := new(CreateResponse)
+	err := c.cc.Invoke(ctx, TeacherService_Create_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *teacherServiceClient) ReadData(ctx context.Context, in *ReadDataRequest, opts ...grpc.CallOption) (*ReadDataResponse, error) {
-	out := new(ReadDataResponse)
-	err := c.cc.Invoke(ctx, TeacherService_ReadData_FullMethodName, in, out, opts...)
+func (c *teacherServiceClient) Read(ctx context.Context, in *ReadRequest, opts ...grpc.CallOption) (*ReadResponse, error) {
+	out := new(ReadResponse)
+	err := c.cc.Invoke(ctx, TeacherService_Read_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *teacherServiceClient) UpdateData(ctx context.Context, in *UpdateDataRequest, opts ...grpc.CallOption) (*UpdateDataResponse, error) {
-	out := new(UpdateDataResponse)
-	err := c.cc.Invoke(ctx, TeacherService_UpdateData_FullMethodName, in, out, opts...)
+func (c *teacherServiceClient) Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error) {
+	out := new(UpdateResponse)
+	err := c.cc.Invoke(ctx, TeacherService_Update_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *teacherServiceClient) DeleteData(ctx context.Context, in *DeleteDataRequest, opts ...grpc.CallOption) (*DeleteDataResponse, error) {
-	out := new(DeleteDataResponse)
-	err := c.cc.Invoke(ctx, TeacherService_DeleteData_FullMethodName, in, out, opts...)
+func (c *teacherServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error) {
+	out := new(DeleteResponse)
+	err := c.cc.Invoke(ctx, TeacherService_Delete_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,10 +83,10 @@ func (c *teacherServiceClient) DeleteData(ctx context.Context, in *DeleteDataReq
 // All implementations must embed UnimplementedTeacherServiceServer
 // for forward compatibility
 type TeacherServiceServer interface {
-	CreateData(context.Context, *CreateDataRequest) (*CreateDataResponse, error)
-	ReadData(context.Context, *ReadDataRequest) (*ReadDataResponse, error)
-	UpdateData(context.Context, *UpdateDataRequest) (*UpdateDataResponse, error)
-	DeleteData(context.Context, *DeleteDataRequest) (*DeleteDataResponse, error)
+	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	Read(context.Context, *ReadRequest) (*ReadResponse, error)
+	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
+	Delete(context.Context, *DeleteRequest) (*DeleteResponse, error)
 	mustEmbedUnimplementedTeacherServiceServer()
 }
 
@@ -94,17 +94,17 @@ type TeacherServiceServer interface {
 type UnimplementedTeacherServiceServer struct {
 }
 
-func (UnimplementedTeacherServiceServer) CreateData(context.Context, *CreateDataRequest) (*CreateDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateData not implemented")
+func (UnimplementedTeacherServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedTeacherServiceServer) ReadData(context.Context, *ReadDataRequest) (*ReadDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadData not implemented")
+func (UnimplementedTeacherServiceServer) Read(context.Context, *ReadRequest) (*ReadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Read not implemented")
 }
-func (UnimplementedTeacherServiceServer) UpdateData(context.Context, *UpdateDataRequest) (*UpdateDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateData not implemented")
+func (UnimplementedTeacherServiceServer) Update(context.Context, *UpdateRequest) (*UpdateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedTeacherServiceServer) DeleteData(context.Context, *DeleteDataRequest) (*DeleteDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteData not implemented")
+func (UnimplementedTeacherServiceServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedTeacherServiceServer) mustEmbedUnimplementedTeacherServiceServer() {}
 
@@ -119,74 +119,74 @@ func RegisterTeacherServiceServer(s grpc.ServiceRegistrar, srv TeacherServiceSer
 	s.RegisterService(&TeacherService_ServiceDesc, srv)
 }
 
-func _TeacherService_CreateData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateDataRequest)
+func _TeacherService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TeacherServiceServer).CreateData(ctx, in)
+		return srv.(TeacherServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TeacherService_CreateData_FullMethodName,
+		FullMethod: TeacherService_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TeacherServiceServer).CreateData(ctx, req.(*CreateDataRequest))
+		return srv.(TeacherServiceServer).Create(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TeacherService_ReadData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadDataRequest)
+func _TeacherService_Read_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TeacherServiceServer).ReadData(ctx, in)
+		return srv.(TeacherServiceServer).Read(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TeacherService_ReadData_FullMethodName,
+		FullMethod: TeacherService_Read_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TeacherServiceServer).ReadData(ctx, req.(*ReadDataRequest))
+		return srv.(TeacherServiceServer).Read(ctx, req.(*ReadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TeacherService_UpdateData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateDataRequest)
+func _TeacherService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TeacherServiceServer).UpdateData(ctx, in)
+		return srv.(TeacherServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TeacherService_UpdateData_FullMethodName,
+		FullMethod: TeacherService_Update_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TeacherServiceServer).UpdateData(ctx, req.(*UpdateDataRequest))
+		return srv.(TeacherServiceServer).Update(ctx, req.(*UpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TeacherService_DeleteData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteDataRequest)
+func _TeacherService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TeacherServiceServer).DeleteData(ctx, in)
+		return srv.(TeacherServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TeacherService_DeleteData_FullMethodName,
+		FullMethod: TeacherService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TeacherServiceServer).DeleteData(ctx, req.(*DeleteDataRequest))
+		return srv.(TeacherServiceServer).Delete(ctx, req.(*DeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -199,20 +199,20 @@ var TeacherService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TeacherServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateData",
-			Handler:    _TeacherService_CreateData_Handler,
+			MethodName: "Create",
+			Handler:    _TeacherService_Create_Handler,
 		},
 		{
-			MethodName: "ReadData",
-			Handler:    _TeacherService_ReadData_Handler,
+			MethodName: "Read",
+			Handler:    _TeacherService_Read_Handler,
 		},
 		{
-			MethodName: "UpdateData",
-			Handler:    _TeacherService_UpdateData_Handler,
+			MethodName: "Update",
+			Handler:    _TeacherService_Update_Handler,
 		},
 		{
-			MethodName: "DeleteData",
-			Handler:    _TeacherService_DeleteData_Handler,
+			MethodName: "Delete",
+			Handler:    _TeacherService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
