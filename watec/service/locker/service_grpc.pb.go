@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v3.21.12
-// source: watec/service/locker/locker.proto
+// source: watec/service/locker/service.proto
 
 package lokrsvc
 
@@ -216,5 +216,5 @@ var LockerService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "watec/service/locker/locker.proto",
+	Metadata: "watec/service/locker/service.proto",
 }
